@@ -693,7 +693,7 @@ input:focus, textarea:focus, select:focus {
 <div class="toast" id="toast"></div>
 
 <script>
-const STORE_KEY = 'dev_project_tracker_v2';
+const STORE_KEY = 'dev_project_tracker_v3';
 let projects = [];
 let activeId = null;
 let currentFilter = 'all';
@@ -753,6 +753,47 @@ function seedDefaults() {
       notes: [{ id: uid(), text: 'Language mirroring bug fixed. AI now correctly mirrors input language for flashcard generation. Vercel deployment stable.', date: '2025-05-08T08:00:00' }],
       reports: [{ id: uid(), title: 'Language detection regression', result: 'pass', body: 'AI correctly mirrors input language. Tested with Indonesian, English, Spanish inputs. All pass.', date: '2025-05-08T12:00:00' }],
       created: Date.now() - 30 * 86400000
+    },
+    {
+      id: uid(), name: 'GEOvis',
+      desc: 'Generative Engine Optimisation SaaS — tracks AI visibility & boosts brand mentions in LLM responses',
+      stack: 'Next.js 14, Supabase, Prisma, Perplexity API, Claude API, Stripe, NextAuth.js, Tailwind, TypeScript',
+      status: 'active', progress: 30, phase: 'Phase 2 — Feature Eng.', priority: 5,
+      notes: [
+        { id: uid(), text: 'Phase 1 complete: Auth (register/login), Prisma schema, DB push, middleware protecting /dashboard routes. NextAuth credentials provider with bcrypt (salt 12) working.', date: '2025-05-10T09:00:00' },
+        { id: uid(), text: 'Phase 2 next: Build lib/prompts.ts (10 prompts per industry), lib/perplexity.ts queryPerplexity(), lib/crawler.ts with cheerio. Run all 10 prompts in parallel via Promise.all — never sequential.', date: '2025-05-10T09:30:00' },
+        { id: uid(), text: 'CRITICAL RULES: Never show fake scores — all numbers must come from real Perplexity API. Never modify geo-engine.ts or schema.prisma. Never expose API keys to client. Always wrap DB writes in try/catch.', date: '2025-05-10T10:00:00' }
+      ],
+      reports: [
+        { id: uid(), title: 'Phase 1 verification', result: 'pass', body: 'User can register, login, and /dashboard redirects to /login when unauthenticated. Prisma DB push clean. TypeScript strict mode passing (npx tsc --noEmit zero errors).', date: '2025-05-10T11:00:00' }
+      ],
+      created: Date.now() - 5 * 86400000
+    },
+    {
+      id: uid(), name: 'BTC Quant Engine',
+      desc: '65%+ accuracy Bitcoin price prediction engine using Binance real-time data, technical indicators & signal processing',
+      stack: 'Python 3.10+, Binance API, pandas, numpy, ta (TA-Lib), XGBoost, ccxt',
+      status: 'active', progress: 20, phase: 'Phase 2 — Feature Eng.', priority: 4,
+      notes: [
+        { id: uid(), text: 'Phase 1 COMPLETE: Real Binance data acquired — 1000 5-minute BTC/USDT candles (Apr 5–9 2026). Mean price $70,021.53, range $67,414–$72,753. Data saved to btc_market_data.csv.', date: '2026-04-09T09:20:00' },
+        { id: uid(), text: 'Phase 2 ready: Implement indicators.py — RSI(14), EMA9/21, MACD(12,26,9), Price Momentum, Volume Spike, Volatility (rolling std). Use ta library.', date: '2026-04-09T09:30:00' },
+        { id: uid(), text: 'Signal weights defined: Momentum 0.8, Trend (EMA cross) 0.7, RSI 0.6, MACD 0.7. Volume spike amplifies signals ×1.2. High volatility reduces confidence ×0.9. Decision threshold: UP/DOWN only when dominant side > 1.4× other.', date: '2026-04-09T09:35:00' }
+      ],
+      reports: [
+        { id: uid(), title: 'Phase 1 data validation', result: 'pass', body: 'Binance API returning 1000 real candles. btc_market_data.csv confirmed: 1000 rows × 6 cols (timestamp, open, high, low, close, volume). Sharpe ratio baseline 0.0384. Data pipeline established.', date: '2026-04-09T09:20:00' }
+      ],
+      created: Date.now() - 36 * 86400000
+    },
+    {
+      id: uid(), name: 'Insecbyte',
+      desc: 'Pentesting & cybersecurity tools platform',
+      stack: 'TBD',
+      status: 'planning', progress: 5, phase: 'Scoping', priority: 3,
+      notes: [
+        { id: uid(), text: 'Project added. Stack and scope TBD — add architecture notes here as planning progresses.', date: '2025-05-15T10:00:00' }
+      ],
+      reports: [],
+      created: Date.now()
     }
   ];
   save();
